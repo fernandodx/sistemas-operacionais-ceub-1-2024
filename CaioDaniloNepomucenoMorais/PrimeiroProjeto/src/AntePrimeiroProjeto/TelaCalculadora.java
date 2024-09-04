@@ -1,4 +1,4 @@
-package aula20_08;
+package AntePrimeiroProjeto;
 
 
 
@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class TCalculadora {
+public class TelaCalculadora {
 
 	public static void main(String[] args) throws InterruptedException {
 		
