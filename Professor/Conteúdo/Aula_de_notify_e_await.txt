@@ -1,0 +1,150 @@
+class banheiro 
+......
+
+private boolean isSujo = true
+
+
+public void limpa() {
+
+    String nome = Thread.currentThread().getName();
+
+    System.out.println(nome + " batendo na porta");
+
+    synchronized (this) {
+
+        System.out.println(nome + " entrando no banheiro");
+
+        if (!this.ehSujo) {
+            System.out.println(nome + ", não está sujo, vou sair");
+            return;
+        }
+
+        System.out.println(nome + " limpando o banheiro");
+        this.ehSujo = false;
+
+        try {
+            Thread.sleep(13000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.notifyAll();
+
+        System.out.println(nome + " saindo do banheiro");
+    }
+}
+
+
+
+
+
+
+public class TarefaLimpeza implements Runnable {
+
+    private Banheiro banheiro;
+
+    public TarefaLimpeza(Banheiro banheiro) {
+        this.banheiro = banheiro;
+    }
+
+    public void run() {
+        this.banheiro.limpa();
+    }
+}
+
+
+
+
+
+//outros threads omitidos
+Thread limpeza = new Thread(new TarefaLimpeza(banheiro), "Limpeza");
+
+//inicialização dos outros threads omitida
+limpeza.start();
+
+
+
+
+
+public void fazNumero1() {
+
+    // restante do código omitido
+
+    this.ehSujo = true; //novo
+
+    System.out.println(nome + " dando descarga");
+    System.out.println(nome + " lavando a mao");
+    System.out.println(nome + " saindo do banheiro");
+}
+
+
+
+
+public void fazNumero1() {
+
+    String nome = Thread.currentThread().getName();
+
+    System.out.println(nome + " batendo na porta");
+
+    synchronized (this) {
+
+        System.out.println(nome + " entrando no banheiro");
+
+        while (this.ehSujo) { //novo, trocando if com while
+            SysOut("Banheiro ta sujo!!!")
+
+            this.wait();
+        }
+
+        // restante do código omitido
+}
+
+
+//Limpando banheiro a cada 15  segundo 
+
+public class TarefaLimpeza implements Runnable {
+
+    //construtor e atributo omitido
+
+    @Override
+    public void run() {
+        while(true) {
+            this.banheiro.limpa();
+            try {
+                Thread.sleep(15000);//limpando cada 15s
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+ }
+
+
+
+ Faz sentido a limpeza continuar verificando o banheiro quando não há mais nenhum convidado com necessidades? Provável que não! Vamos alterar o thread da limpeza para funcionar dessa maneira.
+
+1) Na classe Principal chame o método setDaemon(true) na thread de limpeza antes de inicializá-la:
+
+Thread limpeza = new Thread(new TarefaLimpeza(banheiro), "Limpeza");
+limpeza.setDaemon(true); //Lembrando que o método setDaemon(true) não substitui o start()
+
+
+O que deamon Resposta correta: São provedores de serviços para outras threads.
+
+Threads daemon são como prestadores de serviços para outras threads. Elas são usadas para dar apoio à tarefas e só são necessárias rodar quando as threads "normais" ainda estão sendo executadas. Uma thread daemon não impede a JVM de terminar desde que não existem mais threads principais em execução. Um exemplo de uma thread daemon é o coletor de lixo da JVM (Garbage Collector) ou a nossa limpeza do banheiro :)
+
+Para definir uma thread como daemon basta usar o método setDaemon(boolean) antes de inicializar:
+
+
+
+Na classe Thread existe um método setPriority com justamente esse propósito. A prioridade é um valor inteiro entre 1 e 10, sendo 10 a prioridade mais alta. Basta usar o método:
+
+Thread limpeza = new Thread(new TarefaLimpeza(banheiro), "Limpeza");
+limpeza.setPriority(10);
+limpeza.start();
+
+
+limpeza.setPriority(Thread.MAX_PRIORITY);
+
+
+limpeza.setPriority(Thread.MIN_PRIORITY);
