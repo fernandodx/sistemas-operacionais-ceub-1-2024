@@ -10,12 +10,15 @@ public class Limpeza implements Runnable {
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (true) {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.banheiro.limpar();
+
         }
-        this.banheiro.limpar();
 
     }
 
