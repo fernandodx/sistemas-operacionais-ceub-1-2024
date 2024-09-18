@@ -7,10 +7,11 @@ public class App {
         Thread convidado2 = new Thread(new Numero2(banheiro), "Bruno");
         Thread convidado3 = new Thread(new Numero1(banheiro), "Caique");
         Thread convidado4 = new Thread(new Numero2(banheiro), "Reginaldo");
-
+        Thread limpeza = new Thread(new Limpeza (banheiro),"Severino Limpeza");
         convidado1.start();
         convidado2.start();
         convidado3.start();
         convidado4.start();
+        limpeza.start();
     }
 }
