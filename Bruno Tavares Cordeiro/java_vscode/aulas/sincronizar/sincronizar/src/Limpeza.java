@@ -9,14 +9,18 @@ public class Limpeza implements Runnable {
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
+        while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
 
-            e.printStackTrace();
+                e.printStackTrace();
+
+            }
+            this.banheiro.limpar();
+
         }
 
-        this.banheiro.limpar();
     }
 
 }
