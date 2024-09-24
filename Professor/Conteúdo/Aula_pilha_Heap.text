@@ -1,0 +1,114 @@
+///EXEMPLO StackOverflowError
+
+### Exemplo: Sistema de Gerenciamento Escolar
+
+Imagine que temos um sistema que gerencia departamentos e disciplinas em uma escola. Vamos criar duas classes: `Departamento` e `Disciplina`. Cada departamento tem uma lista de disciplinas e cada disciplina pertence a um departamento. Se não tomarmos cuidado com as referências entre os dois, podemos acabar criando uma recursão infinita.
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Escola {
+
+    public static void main(String[] args) {
+        Departamento departamento = new Departamento("Ciências");
+        Disciplina disciplina = new Disciplina("Biologia", departamento);
+        
+        // Adiciona a disciplina ao departamento
+        departamento.adicionarDisciplina(disciplina);
+        
+        // Tenta imprimir os detalhes do departamento
+        departamento.imprimirDetalhes();
+    }
+}
+
+class Departamento {
+    private String nome;
+    private List<Disciplina> disciplinas;
+
+    public Departamento(String nome) {
+        this.nome = nome;
+        this.disciplinas = new ArrayList<>();
+    }
+
+    public void adicionarDisciplina(Disciplina disciplina) {
+        disciplinas.add(disciplina);
+    }
+
+    public void imprimirDetalhes() {
+        System.out.println("Departamento: " + nome);
+        for (Disciplina d : disciplinas) {
+            d.imprimirDetalhes();
+        }
+    }
+}
+
+class Disciplina {
+    private String nome;
+    private Departamento departamento;
+
+    public Disciplina(String nome, Departamento departamento) {
+        this.nome = nome;
+        this.departamento = departamento;
+    }
+
+    public void imprimirDetalhes() {
+        System.out.println("Disciplina: " + nome);
+        departamento.imprimirDetalhes();
+    }
+}
+```
+
+### Explicação do Código:
+
+1. **Classe `Escola`**: Contém o método principal `main` e cria um departamento e uma disciplina. A disciplina é adicionada ao departamento e, em seguida, tentamos imprimir os detalhes do departamento.
+
+2. **Classe `Departamento`**: Representa um departamento e contém uma lista de disciplinas. O método `imprimirDetalhes` tenta imprimir os detalhes de todas as disciplinas do departamento.
+
+3. **Classe `Disciplina`**: Representa uma disciplina que pertence a um departamento. O método `imprimirDetalhes` tenta imprimir os detalhes do departamento ao qual a disciplina pertence.
+
+### Problema:
+- Quando `departamento.imprimirDetalhes()` é chamado, ele tenta imprimir os detalhes de cada disciplina.
+- O método `imprimirDetalhes` da `Disciplina` tenta imprimir os detalhes do departamento, que novamente tenta imprimir os detalhes das disciplinas, resultando em uma recursão infinita.
+
+### Demonstração do `StackOverflowError`:
+Ao executar o programa acima, você verá uma saída semelhante a esta:
+
+```
+Departamento: Ciências
+Disciplina: Biologia
+Departamento: Ciências
+Disciplina: Biologia
+Departamento: Ciências
+Disciplina: Biologia
+...
+Exception in thread "main" java.lang.StackOverflowError
+    at Departamento.imprimirDetalhes(Escola.java:22)
+    at Disciplina.imprimirDetalhes(Escola.java:39)
+    at Departamento.imprimirDetalhes(Escola.java:22)
+    at Disciplina.imprimirDetalhes(Escola.java:39)
+    ...
+```
+
+### Solução:
+Para evitar o `StackOverflowError`, precisamos evitar a recursão infinita. Podemos ajustar o método `imprimirDetalhes` de `Disciplina` para não chamar o método `imprimirDetalhes` do departamento:
+
+```java
+class Disciplina {
+    private String nome;
+    private Departamento departamento;
+
+    public Disciplina(String nome, Departamento departamento) {
+        this.nome = nome;
+        this.departamento = departamento;
+    }
+
+    public void imprimirDetalhes() {
+        System.out.println("Disciplina: " + nome);
+        // Evita recursão infinita comentando a linha abaixo
+        // departamento.imprimirDetalhes();
+    }
+}
+```
+
+Com essa modificação, o método `imprimirDetalhes` da `Disciplina` não tenta imprimir os detalhes do departamento, evitando a recursão infinita e o `StackOverflowError`.
