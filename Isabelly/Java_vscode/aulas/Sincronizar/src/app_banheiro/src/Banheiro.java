@@ -1,3 +1,5 @@
+package app_banheiro.src;
+
 public class Banheiro {
 
     public void fazerNumero1() {
