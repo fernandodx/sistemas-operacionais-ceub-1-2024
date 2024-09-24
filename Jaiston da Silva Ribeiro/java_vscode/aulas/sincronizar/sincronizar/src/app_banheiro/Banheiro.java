@@ -13,7 +13,7 @@ public class Banheiro {
         synchronized (this) {
             // Se o banheiro estiver sujo não quero usar!
             while (this.isSujo) {
-                System.out.println("Eita! Banheiro Sujo... Tô fora!");
+                System.out.println(nome + "Eita! Banheiro Sujo... Tô fora!");
                 try {
                     this.wait();
                 } catch (InterruptedException e) {
@@ -53,7 +53,7 @@ public class Banheiro {
 
         synchronized(this){
             if(this.isSujo){
-                System.out.println("O banheiro já esta limpo!");
+                System.out.println(nome + "O banheiro já esta limpo!");
                 return;
             }
             System.out.println("Iniciando limpeza banheiro...");
@@ -90,6 +90,8 @@ public class Banheiro {
         System.out.println(nome + " dando descarga");
         System.out.println(nome + " lavando as mãos ");
         System.out.println(nome + " saindo do banheiro ");
+
+        this.isSujo=true;
     }
 
 }

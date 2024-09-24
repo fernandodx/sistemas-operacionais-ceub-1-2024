@@ -8,6 +8,7 @@ public class App {
         Thread convidado3 = new Thread(new Numero1(banheiro), "Caique");
         Thread convidado4 = new Thread(new Numero2(banheiro), "Reginaldo");
         Thread limpeza = new Thread(new Limpeza (banheiro),"Severino Limpeza");
+        limpeza.setDaemon(true);
         convidado1.start();
         convidado2.start();
         convidado3.start();
