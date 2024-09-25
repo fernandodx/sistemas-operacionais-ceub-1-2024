@@ -8,8 +8,10 @@ public class App {
 
     public static void main(String[] args) {
 
+        // Lista lista = new Lista();
+        // List<String> lista = new ArrayList<>();
         List<String> lista = Collections.synchronizedList(new ArrayList<String>());
-        
+
         for (int i = 0; i < 10; i++) {
             new Thread(new TarefaAdicional(lista, i)).start();
         }
@@ -19,8 +21,8 @@ public class App {
             e.printStackTrace();
         }
 
-        for (int i = 0; i < lista.tamanho(); i++) {
-            System.out.println(i + " - " + lista.getElemento(i));
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(i + " - " + lista.get(i));
         }
 
     }

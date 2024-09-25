@@ -18,7 +18,7 @@ public class Lista {
             this.elementos[indice] = elemento;
             this.indice++;
         }
-        
+
     }
 
 }
