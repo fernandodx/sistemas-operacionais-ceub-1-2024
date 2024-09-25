@@ -8,7 +8,7 @@ public class Numero2 implements Runnable {
 
     @Override
     public void run() {
-        this.banheiro.fazerNumeroDois();
+        this.banheiro.fazerNumero2();
     }
 
 }
