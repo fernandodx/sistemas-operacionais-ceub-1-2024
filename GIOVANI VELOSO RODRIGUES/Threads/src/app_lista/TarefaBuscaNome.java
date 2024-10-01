@@ -1,4 +1,4 @@
-package br.com.ceub ;import java.io.File;
+package app_lista ;import java.io.File;
 import java.util.Scanner;
 
 public class TarefaBuscaNome implements Runnable {
