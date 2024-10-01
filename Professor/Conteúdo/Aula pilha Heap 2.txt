@@ -1,0 +1,70 @@
+Aula pilha Heap 2 
+
+* Explicar concatenação de string 
+
+
+ valor1 = valor1 + "Programacao";
+ System.out.println(valor1);
+
+
+
+ String resultado = "";
+for(int i = 1; i<=100; i++){
+    resultado = resultado + i + " ";
+}
+System.out.println(resultado);
+
+
+
+-----------
+
+Objetos Mutáveis: São aqueles que podem ser alterados após sua criação, como os StringBuilders.
+
+Objetos Imutáveis: Ao contrário dos mutáveis, uma vez que um objeto imutável é criado, ele não pode ser alterado, como a classe String.
+
+A escolha entre usar objetos imutáveis ou mutáveis pode ter um impacto significativo na performance da sua aplicação.
+
+
+
+-----------
+
+
+Solução -> StringBuilder
+
+
+Desafio StringBuilder para StringBuffer 
+
+  StringBuilder resultado = new StringBuilder();
+
+        var thread1 = new Thread(() -> {
+            for (int i = 1; i < 100; i++) {
+                resultado.append(i);
+                resultado.append(" ");
+            }
+        });
+
+        var thread2 = new Thread(() -> {
+            for (int i = 101; i < 200; i++) {
+                resultado.append(i);
+                resultado.append(" ");
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join();
+        thread2.join();
+
+        System.out.println(resultado);
+
+
+--------------
+		java.lang.OutOfMemoryError
+
+   List<String> consultas = new ArrayList<String>();
+        String nome = new String();
+        for (int i = 1; i < 1000000000; i++) {
+            consultas.add(nome);
+        }
+
