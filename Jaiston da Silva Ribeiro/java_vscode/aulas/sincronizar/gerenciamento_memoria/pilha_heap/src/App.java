@@ -5,16 +5,18 @@ public class App {
         Disciplina disciplina = new Disciplina("Sistemas Operacionais", departamento);
         Disciplina disciplina2 = new Disciplina("Sistemas Operacionais", departamento);
 
-        System.out.println(disciplina==disciplina2);
-        System.out.println("Disciplina: "  + disciplina);
-        System.out.println("Disciplina 2: "  + disciplina2);
+        System.out.println(disciplina.equals(disciplina2));
+
+        //System.out.println(disciplina==disciplina2);
+        //System.out.println("Disciplina: "  + disciplina);
+        //System.out.println("Disciplina 2: "  + disciplina2);
 
 
-        disciplina=disciplina2;
+        //disciplina=disciplina2;
 
-        System.out.println(disciplina==disciplina2);
-        System.out.println("Disciplina: " + disciplina);
-        System.out.println("Disciplina 2: " + disciplina2);
+        //System.out.println(disciplina==disciplina2);
+        //System.out.println("Disciplina: " + disciplina);
+        //System.out.println("Disciplina 2: " + disciplina2);
 
 
         //Adiciona a Disciplina ao departamento
