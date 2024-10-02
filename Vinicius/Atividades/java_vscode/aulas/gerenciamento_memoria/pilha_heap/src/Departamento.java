@@ -1,5 +1,4 @@
-public class Departamento {
-    import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Departamento {
@@ -24,7 +23,4 @@ public class Departamento {
         this.disciplinas.add(disciplina);
     }
 
-}
-
-    
 }
