@@ -1,0 +1,74 @@
+Comandos para Gerenciamento de Arquivos
+
+	•	rm: Exclui arquivo.
+	•	rm -i: Pergunta confirmação antes de excluir cada arquivo.
+	•	rm -rf: Força a exclusão de arquivos e diretórios, ignorando avisos.
+
+Redirecionamento de Saída
+
+	•	ls > log.txt: Cria um arquivo chamado log.txt com a saída do comando ls, sobrescrevendo o conteúdo anterior.
+	•	ls >> log.txt: Adiciona a saída do comando ls ao final do arquivo log.txt, preservando o conteúdo existente.
+
+Monitoramento de Processos
+
+Comando top
+
+O comando top detalha cada processo em execução no sistema, exibindo as seguintes informações:
+
+	•	PID: Identificador do processo.
+	•	COMMAND: Nome do comando ou programa.
+	•	%CPU: Porcentagem de uso da CPU pelo processo.
+	•	TIME: Tempo total de CPU consumido pelo processo.
+	•	#TH: Número de threads do processo.
+	•	#WQ: Número de threads de workqueue (fila de trabalho).
+	•	#PORTS: Número de portas abertas pelo processo.
+	•	MEM: Memória usada pelo processo.
+	•	PURG: Memória que pode ser purgada.
+	•	CMPRS: Memória comprimida.
+	•	PGRP: ID do grupo de processos.
+	•	PPID: ID do processo pai.
+	•	STATE: Estado do processo (e.g., running, sleeping).
+	•	BOOSTS: Indica se o processo recebeu boosts de prioridade.
+	•	%CPU_ME: Porcentagem de uso da CPU pelos processos em modo energia (ME).
+	•	%CPU_OTHRS: Porcentagem de uso da CPU por outros processos.
+	•	UID: ID do usuário que executa o processo.
+	•	FAULTS: Número de falhas de página.
+	•	COW: Número de operações de copy-on-write.
+	•	MSGSENT: Número de mensagens enviadas pelo processo.
+	•	MSGRECV: Número de mensagens recebidas pelo processo.
+
+Comando ps
+
+	•	ps: Monitora serviços em execução.
+	•	ps aux: Mostra informações detalhadas sobre todos os processos.
+
+Colunas do Comando ps aux
+
+	1.	USER: O usuário que está executando o processo (ex: _windowserver, Fernando.Dias).
+	2.	PID: O identificador único do processo (ex: 179, 97123).
+	3.	%CPU: A porcentagem de uso da CPU pelo processo (ex: 47.7, 24.4).
+	4.	%MEM: A porcentagem de uso da memória física (RAM) pelo processo (ex: 1.4, 1.6).
+	5.	VSZ: O tamanho virtual do processo em kilobytes (ex: 419691856, 1622162288).
+	6.	RSS: O tamanho da memória residente (RAM atualmente usada pelo processo) em kilobytes (ex: 231088, 276080).
+	7.	TT: O terminal associado ao processo. No macOS, pode aparecer como ?? para processos sem terminal associado.
+	8.	STAT: O estado atual do processo, com estados comuns como:
+	•	R (running): Em execução.
+	•	S (sleeping): Dormindo.
+	•	I (idle): Ocioso.
+	•	Z (zombie): Zumbi.
+	•	T (stopped): Parado.
+	•	W (paging): Paginação.
+	•	Ss: Processo dormindo e é líder de sessão.
+	9.	STARTED: O tempo ou data em que o processo foi iniciado (ex: 1Out24, 5:47).
+	10.	TIME: O tempo total de CPU que o processo consumiu desde que foi iniciado (ex: 4324:41.60, 4:54.95).
+	11.	COMMAND: O comando ou caminho completo do comando que iniciou o processo (ex: /System/Library/PrivateFrameworks/SkyLight.framework/R, /Applications/Google Chrome.app/Contents/Frameworks/Go).
+
+Encerrando ou Pausando Processos
+
+	•	kill [numero processo]: Encerra o processo com o número especificado.
+	•	kill -9 [numero processo]: Força o encerramento do processo, ignorando o que ele estiver fazendo.
+	•	kill -STOP [numero processo]: Pausa o processo.
+	•	ps aux | grep -C 1 46107: Filtra a saída do ps aux, mostrando 1 linha acima e 1 linha abaixo do processo 46107.
+	•	kill -CONT [numero processo]: Retoma a execução de um processo que foi pausado.
+
+Essas anotações agora estão mais estruturadas e detalhadas. Se precisar de mais informações ou ajustes, é só avisar!
