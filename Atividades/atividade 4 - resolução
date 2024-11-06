@@ -1,0 +1,28 @@
+Scripts Bash são arquivos de texto contendo comandos do shell Bash (Bourne Again Shell), que é o shell padrão de muitos sistemas operacionais baseados em Unix, como Linux e macOS. Esses scripts permitem a automação de tarefas repetitivas ou complexas e são utilizados para controlar o funcionamento do sistema operacional ou para realizar operações em arquivos, redes, e sistemas.
+Importâncias: automação, administração de sistemas, facilidade e eficiência, portabilidade e integração com diversas ferramentas.
+
+1. Criar arquivo bash:
+touch info.sh
+
+2. Editar:
+nano info.sh
+
+echo "Data e Hora atuais: $(date)"
+echo "Usuário logado: $(whoami)"
+echo "Diretório atual: $(pwd)"
+echo "Espaço livre no disco: $(df -h | grep '^/dev/' | awk '{print $4}')"
+
+3. Tornando executável: 
+chmod +x info.sh
+
+4. Executando:
+./info.sh
+
+5. Saída:
+
+Data e Hora atuais: Tue Nov  5 10:00:00 UTC 2024
+Usuário logado: user1
+Diretório atual: /home/user1
+Espaço livre no disco: 50G
+
+
