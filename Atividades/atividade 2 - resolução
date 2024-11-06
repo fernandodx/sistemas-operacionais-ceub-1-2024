@@ -1,0 +1,42 @@
+Deadlock é uma situação em que duas ou mais threads de um programa ficam bloqueadas de forma permanente, esperando por recursos que estão sendo mantidos umas pelas outras, criando um ciclo de dependência que impede qualquer thread de continuar a execução.
+Problemas: bloqueio permanente, perda de desempenho, consumo excessivo de recursos e inconsistência nos dados.
+
+Exemplo:
+
+public class ExemploDeadlock {
+
+    private static final Object recurso1 = new Object();
+    private static final Object recurso2 = new Object();
+
+    public static void main(String[] args) {
+
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (recurso1) {  
+                    System.out.println("Thread 1 bloqueou recurso1");
+                    try { Thread.sleep(50); } catch (InterruptedException e) {}
+                    synchronized (recurso2) {  
+                        System.out.println("Thread 1 bloqueou recurso2");
+                    }
+                }
+            }
+        });
+
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (recurso2) {  
+                    System.out.println("Thread 2 bloqueou recurso2");
+                    try { Thread.sleep(50); } catch (InterruptedException e) {}
+                    synchronized (recurso1) {  
+                        System.out.println("Thread 2 bloqueou recurso1");
+                    }
+                }
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+    }
+}
