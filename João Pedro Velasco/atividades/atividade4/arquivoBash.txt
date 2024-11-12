@@ -1,0 +1,26 @@
+    1  mkdir backup.sh
+    2  rm -f backup.sh
+    3  rmdir backup.sh
+    4  ls
+    5  cd backup.sh
+    6  mkdir atividade4
+    7  touch backup.sh
+    8  vim backup.sh
+    9  gedit backup.sh
+   10  cd atividade4
+   11  gedit backup.sh
+   12  ls
+   13  touch backup.sh
+   14  gedit backup.sh
+   15  nano backup.sh
+   16  ls
+   17  chmod +x info.sh
+   18  chmod +x backup.sh
+   19  /backup.sh
+   20  ./backup.sh
+   21  nano backup.sh
+   22  cat backup.sh
+   23  chmod +x backup.sh
+   24  ./backup.sh
+   25  touch arquivoBash.txt
+   26  history > arquivoBash.txt
