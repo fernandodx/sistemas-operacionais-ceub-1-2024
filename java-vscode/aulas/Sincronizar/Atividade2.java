@@ -6,7 +6,7 @@
 // Uso ineficiente de recursos: Recursos alocados nunca são liberados, o que pode esgotar o sistema.
 // Impacto na experiência do usuário: Em sistemas críticos, como bancos ou sistemas médicos, um deadlock pode causar perda de dados ou interrupção de serviços.
 
-public class DeadlockExample {
+public class Atividade2 {
     private static final Object resource1 = new Object();
     private static final Object resource2 = new Object();
 
