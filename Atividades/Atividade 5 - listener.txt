@@ -1,3 +1,0 @@
- - Pesquise sobre listener é um padrão de projeto muito utilizado no desenvolvimento mobile. 
-
-Crie um exemplo em java de um listener. 
