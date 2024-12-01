@@ -4,6 +4,5 @@ Você pode imprimir a id da thread através do método getId(), por exemplo:
 
 Thread threadAtual = Thread.currentThread();
 long id = threadAtual.getId();
-System.out.println("Id da thread: " + id);
 
 Responda:  Rode o programa no mínimo duas vezes para ver se o resultado da execução difere.
