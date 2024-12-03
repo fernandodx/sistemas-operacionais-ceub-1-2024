@@ -7,5 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="sequencia_fibonacci2"/>
+	<classpathentry kind="src" path="ExercicioBash"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
