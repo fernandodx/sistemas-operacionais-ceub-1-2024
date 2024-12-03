@@ -1,9 +1,30 @@
-Crie um programa com duas threads que imprimem números de 1 até 1000, além da ID da thread.
+class Contador extends Thread {
+    @Override
+    public void run() {
+        long id = Thread.currentThread().getId();
+        System.out.println("Id da thread: " + id);
+        
+        for (int i = 1; i <= 1000; i++) {
+            System.out.println("Thread ID " + id + ": " + i);
+        }
+    }
+}
 
-Você pode imprimir a id da thread através do método getId(), por exemplo:
-
-Thread threadAtual = Thread.currentThread();
-long id = threadAtual.getId();
-System.out.println("Id da thread: " + id);
-
-Responda:  Rode o programa no mínimo duas vezes para ver se o resultado da execução difere.
+public class Main {
+    public static void main(String[] args) {
+        Contador thread1 = new Contador();
+        Contador thread2 = new Contador();
+        
+        thread1.start();
+        thread2.start();
+        
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Contagem finalizada.");
+    }
+}
