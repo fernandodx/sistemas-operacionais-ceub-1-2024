@@ -46,3 +46,4 @@ public class Main {
         button.click();
     }
 }
+

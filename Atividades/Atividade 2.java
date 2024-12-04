@@ -31,6 +31,7 @@ public class DeadlockExample {
                 }
             }
         });
+        
 
         
         Thread thread2 = new Thread(() -> {
