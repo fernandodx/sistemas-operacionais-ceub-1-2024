@@ -28,3 +28,4 @@ public class Fibonacci {
         System.out.println("O " + n + "º termo da sequência de Fibonacci é: " + resultado);
     }
 }
+
