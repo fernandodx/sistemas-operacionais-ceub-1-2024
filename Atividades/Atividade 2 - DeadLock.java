@@ -1,5 +1,12 @@
-// - Pesquise e responda. O que é um DeadLock? Quais os problemas podem acontecer em uma aplicação quando isso acontecer. 
-  //- Faça um exemplo de um código em java que dê Deadlock. 
+    // - Pesquise e responda. O que é um DeadLock? Quais os problemas podem acontecer em uma aplicação quando isso acontecer. 
+
+//Um deadlock ocorre quando dois ou mais processos ficam travados, esperando que um libere o recurso necessário para o outro, sem que isso aconteça. É como duas pessoas tentando passar por uma porta estreita ao mesmo tempo, sem ceder, resultando em um bloqueio mútuo.
+
+//Esse problema pode fazer a aplicação congelar, reduzir a eficiência do sistema ao bloquear recursos e causar insatisfação ao usuário devido a falhas aparentes. Em sistemas críticos, os riscos aumentam, podendo ocorrer perda de dados ou falhas de segurança.
+
+//Para evitar deadlocks, os desenvolvedores podem organizar melhor a ordem de uso dos recursos, definir tempos máximos de espera ou usar algoritmos que detectem e solucionem o problema automaticamente. Isso garante maior estabilidade e desempenho do sistema.
+
+    //- Faça um exemplo de um código em java que dê Deadlock. 
 
   public class DeadlockExample {
     static class Recurso {
