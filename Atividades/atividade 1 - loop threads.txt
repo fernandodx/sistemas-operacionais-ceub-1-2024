@@ -1,9 +1,26 @@
-Crie um programa com duas threads que imprimem números de 1 até 1000, além da ID da thread.
+1- public class ImprimirNumeros {
 
-Você pode imprimir a id da thread através do método getId(), por exemplo:
+    public static void main(String[] args) {
+        // Criando duas threads para imprimir os números de 1 a 1000
+        Thread thread1 = new Thread(new ImprimirNumerosRunnable());
+        Thread thread2 = new Thread(new ImprimirNumerosRunnable());
 
-Thread threadAtual = Thread.currentThread();
-long id = threadAtual.getId();
-System.out.println("Id da thread: " + id);
+        thread1.start();
+        thread2.start();
+    }
+}
 
-Responda:  Rode o programa no mínimo duas vezes para ver se o resultado da execução difere.
+class ImprimirNumerosRunnable implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 1; i <= 1000; i++) {
+            Thread threadAtual = Thread.currentThread();
+            long id = threadAtual.getId();
+
+            System.out.println("Thread ID: " + id + " - Número: " + i);
+        }
+    }
+}
+
+
+2- Sim, o resultado da execução pode variar quando o programa é executado várias vezes.

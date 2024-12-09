@@ -1,0 +1,37 @@
+1- Deadlock refere-se a um cenário onde dois ou mais processos permanecem travados, aguardando incessantemente por recursos uns dos outros. Isso pode resultar em paralisação de processos, erros no sistema, dados desatualizados e diminuição do rendimento. A meta é prevenir, identificar ou solucionar essas circunstâncias para assegurar a continuidade e eficácia da aplicação.
+
+
+2- public class DeadlockExample {
+
+    static class Resource {
+        synchronized void method1(Resource r) {
+            System.out.println(Thread.currentThread().getName() + " está tentando acessar method1.");
+            try {
+                Thread.sleep(100); // Simula um tempo de execução
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            r.method2(); // Chama o método2 do outro objeto
+        }
+
+        synchronized void method2() {
+            System.out.println(Thread.currentThread().getName() + " está acessando method2.");
+        }
+    }
+
+    public static void main(String[] args) {
+        final Resource resource1 = new Resource();
+        final Resource resource2 = new Resource();
+
+        Thread thread1 = new Thread(() -> {
+            resource1.method1(resource2);
+        }, "Thread-1");
+
+        Thread thread2 = new Thread(() -> {
+            resource2.method1(resource1);
+        }, "Thread-2");
+
+        thread1.start();
+        thread2.start();
+    }
+}
