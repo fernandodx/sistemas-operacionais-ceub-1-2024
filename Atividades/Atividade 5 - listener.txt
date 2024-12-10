@@ -1,3 +1,41 @@
  - Pesquise sobre listener é um padrão de projeto muito utilizado no desenvolvimento mobile. 
+R = Listener é um padrão de projeto amplamente utilizado em desenvolvimento mobile (e também em outras áreas) para reagir a eventos. Ele permite que uma classe "escute" mudanças ou ações ocorridas em outra classe, como cliques de botão, mudanças de estado, ou atualizações em dados. O listener é registrado e notificado quando o evento ocorre.
 
 Crie um exemplo em java de um listener. 
+
+interface OnClickListener {
+    void onClick();
+}
+
+class Button {
+    private OnClickListener listener;
+
+    public void setOnClickListener(OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    public void click() {
+        System.out.println("Botão foi clicado!");
+        if (listener != null) {
+            listener.onClick(); // Notifica o listener registrado
+        }
+    }
+}
+
+public class ListenerExample {
+    public static void main(String[] args) {
+        // Cria uma instância do botão
+        Button button = new Button();
+
+        // Registra o listener usando uma classe anônima
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick() {
+                System.out.println("O evento de clique foi tratado pelo listener!");
+            }
+        });
+
+        // Simula o clique no botão
+        button.click();
+    }
+}

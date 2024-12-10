@@ -11,5 +11,21 @@ Avaliação:
  - Faça um código da sua cabeça, tente resolver sem usar GPT ou qualquer site de ajuda, isso é um desafio. 
  - Após a conclusão da tarefa, pesquise na internet como resolver esse problema usando recursividade e tente entender o que esta acontecendo. 
 
+public class Fibonacci {
 
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+            return n; // Caso base: Fibonacci(0) = 0, Fibonacci(1) = 1
+        }
+
+        // Chamada recursiva: Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+
+        System.out.println("O " + n + "º número de Fibonacci é: " + fibonacci(n));
+    }
+}
 

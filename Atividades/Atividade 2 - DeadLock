@@ -1,2 +1,56 @@
  - Pesquise e responda. O que é um DeadLock? Quais os problemas podem acontecer em uma aplicação quando isso acontecer. 
   - Faça um exemplo de um código em java que dê Deadlock. 
+
+deadlock ocorre quando duas ou mais threads ficam presas esperando recursos umas das outras, criando um ciclo de dependência que impede qualquer progresso.
+Por exemplo:
+A Thread A bloqueia o recurso 1 e espera pelo recurso 2.
+A Thread B bloqueia o recurso 2 e espera pelo recurso 1.
+Problemas causados pelo Deadlock:
+*Consumo excessivo de recursos: As threads presas continuam ocupando memória e CPU.
+*Perda de desempenho: O sistema pode ficar lento ou instável.
+*Dificuldade de debug: Deadlocks são complicados de identificar e corrigir devido à sua natureza imprevisível.
+
+
+Exemplo do código java que tenha deadlock: 
+
+public class DeadlockExample {
+    private static final Object lockA = new Object();
+    private static final Object lockB = new Object();
+
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new Task(lockA, lockB), "Thread-1");
+        Thread thread2 = new Thread(new Task(lockB, lockA), "Thread-2");
+
+        thread1.start();
+        thread2.start();
+    }
+}
+
+class Task implements Runnable {
+    private final Object firstLock;
+    private final Object secondLock;
+
+    public Task(Object firstLock, Object secondLock) {
+        this.firstLock = firstLock;
+        this.secondLock = secondLock;
+    }
+
+    @Override
+    public void run() {
+        synchronized (firstLock) {
+            System.out.println(Thread.currentThread().getName() + ": locked " + firstLock);
+
+            try {
+                // Simula algum processamento
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+            System.out.println(Thread.currentThread().getName() + ": waiting to lock " + secondLock);
+            synchronized (secondLock) {
+                System.out.println(Thread.currentThread().getName() + ": locked " + secondLock);
+            }
+        }
+    }
+}
