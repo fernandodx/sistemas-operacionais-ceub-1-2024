@@ -1,0 +1,61 @@
+    1  help
+    2  ls
+    3  wsl ~
+    4  makedir
+    5  cdir
+    6  cd
+    7  start
+    8  ls
+    9  cd
+   10  sudo apt update
+   11  sudo apt install
+   12  sudo apt install --upgradable
+   13  sudo apt upgrade
+   14  ls
+   15  cd ./
+   16  ls
+   17  mkdir aula_unix
+   18  ls
+   19  cd aula_unix
+   20  echo "Minhas notas da aula de Unix" > notas.txt
+   21  ls
+   22  touch arquivolinux.txt arquivoaula.txt arquivoaulaunix.txt
+   23  ls >> log.txt
+   24  rm -i notas.txt
+   25  ls
+   26  rm -f notas.txt
+   27  ls
+   28  rm -f arquivoaula.txt
+   29  ls
+   30  ps aux
+   31  kill 1582
+   32  ps aux
+   33  history > log.txt
+   34  sudo apt install git
+   35  ls
+   36  ps aux
+   37  git
+   38  git log
+   39  ps aux
+   40  nano log.txt
+   41  sudo apt intall ssh
+   42  sudo apt intall sudo apt install openssh-serverssh
+   43  kill 7
+   44  kill -bash
+   45  kill 12
+   46  ls
+   47  sleep 100 12
+   48  ls
+   49  kill -STOP [PID]
+   50  kill -STOP 12
+   51  ls
+   52  cd aula-unix
+   53  cd aula_unix
+   54  ls
+   55  nano
+   56  ps aux
+   57  nano
+   58  ps aux
+   59  cd ..
+   60  rm -rf aula-unix 
+   61  history > log.txt
