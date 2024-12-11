@@ -1,0 +1,24 @@
+package app_lista;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class app {
+    public static void main(String[] args) {
+        // Lista lista = new Lista();
+        // List<String> lista = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            new Thread(new Tarefa(lista, i)).start();
+        }
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(i + "-" + lista.get(i));
+        }
+    }
+
+}
