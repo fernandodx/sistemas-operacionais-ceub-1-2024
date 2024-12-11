@@ -1,0 +1,40 @@
+Atividade 3
+
+ - Faça um programa em Java para calcular o Fibonacci. Veja como ele é calculado aqui : https://www.todamateria.com.br/sequencia-de-fibonacci/
+
+Objetivo: 
+
+ - Fazer vocês entenderem como funciona a recursividade. 
+
+Avaliação: 
+
+ - Faça um código da sua cabeça, tente resolver sem usar GPT ou qualquer site de ajuda, isso é um desafio. 
+ - Após a conclusão da tarefa, pesquise na internet como resolver esse problema usando recursividade e tente entender o que esta acontecendo. 
+
+
+
+public class Fibonacci {
+
+    public static int fibonacci(int n) {
+
+        if (n <= 1) {
+            return n;
+        }
+
+        int anterior = 0, atual = 1;
+
+        for (int i = 2; i <= n; i++) {
+            int proximo = anterior + atual; 
+            anterior = atual;              
+            atual = proximo;               
+        }
+
+        return atual; 
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+
+        System.out.println("O " + n + "º número de Fibonacci é: " + fibonacci(n));
+    }
+}
